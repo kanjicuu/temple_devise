@@ -1,0 +1,36 @@
+
+
+<nav class="grey darken-1">
+  <div class="nav-wrapper">
+    <div class="container">
+      <a href="/" class="brand-logo">template_devise</a>
+
+      <ul class="right hide-on-med-and-down">
+
+        <% if (!user_signed_in?) %>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+          <li><%= link_to "登録", new_user_registration_path %></li>
+        <% else %>
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+
+            <i class="material-icons right">arrow_drop_down</i></a></li>
+        <% end %>
+        <!-- Dropdown Trigger -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <% if current_user %>
+    <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+  <% end %>
+  <li><%= link_to "プロフィールの編集", edit_user_registration_path %></li>
+  <li class="divider"></li>
+  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+</ul>
+
+<script>
+  $(".dropdown-trigger").dropdown();
+</script>

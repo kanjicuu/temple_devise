@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="card-panel login-size">
+      <h5 class="center">ログイン</h5>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "shared/devisemes" %>
+
+        <div class="input-field">
+          <%= f.email_field :email, autofocus: true, class: "validate", id: "email" %>
+          <label for="email">メールアドレス</label>
+        </div>
+
+        <div class="input-field">
+          <%= f.password_field :password , class: "validate", id: "password" %>
+          <label for="password">パスワード</label>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+          <p class="center">
+            <label>
+              <%= f.check_box :remember_me %>
+              <span>パスワードを記憶する。</span>
+            </label>
+          </p>
+        <% end -%>
+
+        <div class="center">
+          <button class="waves-effect waves-light btn-large" type="submit" name="action">ログイン
+          </button>
+        </div>
+
+      <% end %>
+
+      <br>
+
+      <div class="center-align">
+        <%= render "devise/shared/links" %>
+      </div>
+
+    </div>
+  </div>
+</div>
